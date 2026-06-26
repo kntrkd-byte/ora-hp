@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O-RA ～TOKYO～ デザイン比較</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;font-weight:300;}
+
+/* ── スイッチャーUI ── */
+.switcher{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:#0e0e0e;border-bottom:1px solid rgba(201,168,76,0.3);
+  display:flex;align-items:center;justify-content:center;gap:0;
+  height:56px;
+}
+.switcher-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:12px;letter-spacing:0.3em;color:#888;
+  margin-right:24px;
+}
+.tab{
+  padding:12px 36px;font-size:12px;letter-spacing:0.25em;
+  border:1px solid #333;cursor:pointer;
+  background:transparent;color:#888;
+  transition:all 0.3s;font-family:'Noto Serif JP',serif;
+}
+.tab:first-of-type{border-radius:0;}
+.tab.active-a{background:#f8f6f1;color:#1a1a1a;border-color:#f8f6f1;}
+.tab.active-b{background:#c9a84c;color:#0e0e0e;border-color:#c9a84c;}
+.split-btn{
+  margin-left:24px;padding:10px 20px;
+  font-size:11px;letter-spacing:0.2em;
+  border:1px solid #444;color:#666;
+  background:transparent;cursor:pointer;
+  font-family:'Noto Serif JP',serif;transition:all 0.3s;
+}
+.split-btn:hover{border-color:#c9a84c;color:#c9a84c;}
+
+/* ── パネル管理 ── */
+.panels{display:flex;margin-top:56px;min-height:calc(100vh - 56px);}
+.panel{flex:1;overflow:hidden;transition:flex 0.4s ease;}
+.panel.hidden{flex:0;overflow:hidden;}
+.split-mode .panel{flex:1;}
+
+/* ── 分割ラベル ── */
+.panel-badge{
+  position:sticky;top:0;z-index:10;
+  padding:8px 20px;font-size:10px;letter-spacing:0.3em;
+  text-align:center;display:none;
+}
+.split-mode .panel-badge{display:block;}
+
+/* ════════════════════════════════
+   PATTERN A — 強羅花壇スタイル（白・和モダン）
+   ════════════════════════════════ */
+#panelA{background:#f8f6f1;}
+#panelA .panel-badge{background:#f0ede6;color:#8b7355;border-bottom:1px solid rgba(139,115,85,0.2);}
+
+#panelA .site-header{
+  position:sticky;top:0;height:70px;
+  background:rgba(248,246,241,0.96);
+  border-bottom:1px solid rgba(139,115,85,0.2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+}
+#panelA .logo{
+  font-family:'Noto Serif JP',serif;font-size:17px;font-weight:200;
+  letter-spacing:0.5em;color:#1a1a1a;
+}
+#panelA .nav{display:flex;gap:32px;}
+#panelA .nav a{
+  font-family:'Noto Serif JP',serif;font-size:10px;
+  letter-spacing:0.3em;color:#888;text-decoration:none;
+}
+#panelA .line-btn{
+  font-family:'Noto Serif JP',serif;font-size:10px;
+  letter-spacing:0.25em;background:#8b7355;color:#fff;
+  padding:10px 20px;border:none;cursor:pointer;
+}
+
+/* ヒーロー A */
+#panelA .hero{
+  height:85vh;background:#2a2218;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:20px;position:relative;overflow:hidden;
+}
+#panelA .hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#1a1510 0%,#2a2218 40%,#1e1a12 100%);
+}
+#panelA .hero-content{position:relative;text-align:center;}
+#panelA .hero-sub{
+  font-family:'Noto Serif JP',serif;font-size:9px;
+  letter-spacing:0.55em;color:rgba(255,255,255,0.5);margin-bottom:24px;
+}
+#panelA .hero-title{
+  font-family:'Noto Serif JP',serif;font-weight:200;
+  font-size:clamp(40px,6vw,72px);letter-spacing:0.35em;
+  color:#fff;line-height:1.2;margin-bottom:8px;
+}
+#panelA .hero-title span{
+  display:block;font-size:clamp(13px,2vw,20px);
+  letter-spacing:0.65em;color:rgba(255,255,255,0.6);margin-top:8px;
+}
+#panelA .hero-div{width:1px;height:36px;background:rgba(255,255,255,0.3);margin:20px auto;}
+#panelA .hero-copy{
+  font-family:'Noto Serif JP',serif;font-size:13px;
+  letter-spacing:0.3em;color:rgba(255,255,255,0.6);
+}
+#panelA .hero-btn{
+  display:inline-block;margin-top:32px;
+  padding:13px 44px;border:1px solid rgba(255,255,255,0.4);
+  color:rgba(255,255,255,0.8);font-family:'Noto Serif JP',serif;
+  font-size:11px;letter-spacing:0.3em;
+}
+
+/* セクション A */
+#panelA .section{padding:100px 0;background:#fff;}
+#panelA .section.bg-off{background:#f8f6f1;}
+#panelA .sec-inner{max-width:960px;margin:0 auto;padding:0 48px;}
+#panelA .eyebrow{
+  display:block;font-family:'Noto Serif JP',serif;
+  font-size:10px;letter-spacing:0.4em;color:#8b7355;margin-bottom:16px;
+}
+#panelA .sec-title{
+  font-family:'Noto Serif JP',serif;font-size:clamp(22px,2.5vw,28px);
+  font-weight:300;letter-spacing:0.1em;color:#1a1a1a;margin-bottom:52px;
+}
+#panelA .cast-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:48px;}
+#panelA .cast-card{background:#fff;border:1px solid rgba(139,115,85,0.2);}
+#panelA .cast-photo{aspect-ratio:3/4;background:#ede9e3;display:flex;align-items:center;justify-content:center;}
+#panelA .cast-photo span{font-size:9px;letter-spacing:0.2em;color:#bbb;}
+#panelA .cast-info{padding:16px;text-align:center;border-top:1px solid rgba(139,115,85,0.15);}
+#panelA .cast-name{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:300;letter-spacing:0.2em;margin-bottom:4px;}
+#panelA .cast-catch{font-size:10px;color:#888;letter-spacing:0.1em;}
+#panelA .sec-btn{
+  display:inline-block;padding:13px 44px;
+  border:1px solid #8b7355;color:#8b7355;
+  font-family:'Noto Serif JP',serif;font-size:11px;letter-spacing:0.3em;
+}
+#panelA .sec-cta{text-align:center;}
+#panelA .system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(139,115,85,0.2);border:1px solid rgba(139,115,85,0.2);margin-bottom:48px;}
+#panelA .sys-item{background:#fff;padding:44px 24px;text-align:center;}
+#panelA .sys-label{font-family:'Noto Serif JP',serif;font-size:10px;letter-spacing:0.35em;color:#8b7355;margin-bottom:12px;}
+#panelA .sys-val{font-size:12px;color:#888;}
+#panelA .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:48px;}
+#panelA .gallery-item{aspect-ratio:4/3;background:#ede9e3;display:flex;align-items:center;justify-content:center;}
+#panelA .gallery-item span{font-size:9px;letter-spacing:0.3em;color:#bbb;}
+#panelA .access-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+#panelA .access-dl{display:grid;grid-template-columns:80px 1fr;gap:14px 20px;}
+#panelA .access-dt{font-size:10px;letter-spacing:0.2em;color:#8b7355;font-family:'Noto Serif JP',serif;}
+#panelA .access-dd{font-size:13px;color:#1a1a1a;line-height:1.8;}
+#panelA .map-ph{aspect-ratio:4/3;background:#ede9e3;border:1px solid rgba(139,115,85,0.2);display:flex;align-items:center;justify-content:center;}
+#panelA .map-ph span{font-size:11px;letter-spacing:0.2em;color:#bbb;}
+#panelA .footer{background:#1a1a1a;padding:56px 0 28px;text-align:center;}
+#panelA .footer-logo{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:200;letter-spacing:0.5em;color:#c9a84c;margin-bottom:28px;}
+#panelA .footer-nav{display:flex;gap:28px;justify-content:center;margin-bottom:20px;}
+#panelA .footer-nav a{font-size:10px;letter-spacing:0.2em;color:#666;text-decoration:none;}
+#panelA .footer-copy{font-size:10px;color:#444;letter-spacing:0.1em;}
+
+/* ════════════════════════════════
+   PATTERN B — リッツスタイル（黒×白×ゴールド）
+   ════════════════════════════════ */
+#panelB{background:#0e0e0e;}
+#panelB .panel-badge{background:#161616;color:#c9a84c;border-bottom:1px solid rgba(201,168,76,0.2);}
+
+#panelB .site-header{
+  position:sticky;top:0;height:80px;
+  background:rgba(14,14,14,0.95);
+  border-bottom:1px solid rgba(201,168,76,0.15);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;
+}
+#panelB .logo{
+  font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;
+  letter-spacing:0.5em;color:#c9a84c;
+}
+#panelB .nav{display:flex;gap:40px;}
+#panelB .nav a{
+  font-family:'Cormorant Garamond',serif;font-size:11px;
+  letter-spacing:0.4em;color:#888;text-decoration:none;
+}
+#panelB .line-btn{
+  font-family:'Cormorant Garamond',serif;font-size:11px;
+  letter-spacing:0.25em;background:#c9a84c;color:#0e0e0e;
+  padding:11px 24px;border:none;cursor:pointer;
+}
+
+/* ヒーロー B */
+#panelB .hero{
+  height:85vh;background:#0e0e0e;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:0;position:relative;overflow:hidden;
+}
+#panelB .hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 40%,#1a1a1a 0%,#0a0a0a 70%);
+}
+#panelB .hero-content{position:relative;text-align:center;}
+#panelB .hero-sub{
+  font-family:'Cormorant Garamond',serif;font-size:11px;
+  letter-spacing:0.65em;color:rgba(255,255,255,0.35);margin-bottom:36px;
+}
+#panelB .hero-title{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(64px,9vw,120px);letter-spacing:0.2em;
+  color:#fff;line-height:1;margin-bottom:16px;
+}
+#panelB .hero-sub2{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,22px);
+  letter-spacing:0.75em;color:rgba(255,255,255,0.45);margin-bottom:56px;
+}
+#panelB .hero-div{width:1px;height:56px;background:#c9a84c;margin:0 auto 28px;}
+#panelB .hero-copy{
+  font-family:'Noto Serif JP',serif;font-size:13px;
+  letter-spacing:0.3em;color:rgba(255,255,255,0.45);
+}
+
+/* セクション B（ダーク） */
+#panelB .section-dark{padding:140px 0;background:#0e0e0e;}
+#panelB .section-light{padding:140px 0;background:#fafaf8;}
+#panelB .sec-inner{max-width:1100px;margin:0 auto;padding:0 56px;}
+#panelB .eyebrow{
+  display:block;font-family:'Cormorant Garamond',serif;
+  font-size:12px;letter-spacing:0.55em;color:#c9a84c;margin-bottom:20px;
+}
+#panelB .eyebrow-lt{color:#aaa;}
+#panelB .sec-title-dk{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);
+  font-weight:300;letter-spacing:0.06em;color:#f0ece0;margin-bottom:72px;
+}
+#panelB .sec-title-lt{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);
+  font-weight:300;letter-spacing:0.06em;color:#1a1a1a;margin-bottom:72px;
+}
+#panelB .cast-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:64px;}
+#panelB .cast-card{border:1px solid rgba(201,168,76,0.2);}
+#panelB .cast-photo{aspect-ratio:2/3;background:#1e1e1e;display:flex;align-items:center;justify-content:center;}
+#panelB .cast-photo span{font-size:9px;letter-spacing:0.35em;color:#444;}
+#panelB .cast-info{padding:20px;text-align:center;border-top:1px solid rgba(201,168,76,0.15);}
+#panelB .cast-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:0.2em;color:#f0ece0;margin-bottom:6px;}
+#panelB .cast-catch{font-size:11px;color:#888;letter-spacing:0.1em;}
+#panelB .sec-btn-dk{
+  display:inline-block;padding:15px 52px;
+  border:1px solid #c9a84c;color:#c9a84c;
+  font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.3em;
+}
+#panelB .sec-btn-lt{
+  display:inline-block;padding:15px 52px;
+  border:1px solid #1a1a1a;color:#1a1a1a;
+  font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:0.3em;
+}
+#panelB .sec-cta{text-align:center;}
+#panelB .system-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-top:1px solid rgba(26,26,26,0.12);margin-bottom:64px;
+}
+#panelB .sys-item{padding:52px 32px;text-align:center;}
+#panelB .sys-item+.sys-item{border-left:1px solid rgba(26,26,26,0.1);}
+#panelB .sys-label{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.45em;color:#c9a84c;margin-bottom:16px;}
+#panelB .sys-val{font-size:13px;color:#888;}
+/* ギャラリー B — 非対称グリッド */
+#panelB .gallery-asym{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:8px;margin-bottom:64px;}
+#panelB .gallery-main{grid-row:1/3;background:#1e1e1e;display:flex;align-items:center;justify-content:center;min-height:320px;}
+#panelB .gallery-sub{background:#1a1a1a;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;}
+#panelB .gallery-main span,#panelB .gallery-sub span{font-size:9px;letter-spacing:0.35em;color:#444;}
+#panelB .access-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+#panelB .access-dl{display:grid;grid-template-columns:90px 1fr;gap:18px 24px;margin-bottom:40px;}
+#panelB .access-dt{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.3em;color:#c9a84c;}
+#panelB .access-dd{font-size:14px;color:#1a1a1a;line-height:1.8;}
+#panelB .map-ph{aspect-ratio:4/3;background:#e8e4dd;border:1px solid rgba(26,26,26,0.1);display:flex;align-items:center;justify-content:center;}
+#panelB .map-ph span{font-size:11px;letter-spacing:0.2em;color:#aaa;}
+#panelB .footer{background:#060606;padding:72px 0 36px;text-align:center;}
+#panelB .footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:0.5em;color:#c9a84c;margin-bottom:32px;}
+#panelB .footer-nav{display:flex;gap:32px;justify-content:center;margin-bottom:24px;}
+#panelB .footer-nav a{font-family:'Cormorant Garamond',serif;font-size:11px;letter-spacing:0.25em;color:#666;text-decoration:none;}
+#panelB .footer-copy{font-size:10px;color:#333;letter-spacing:0.1em;}
+
+/* レスポンシブ */
+@media(max-width:1000px){
+  .split-mode .nav{display:none;}
+  #panelA .cast-grid,#panelB .cast-grid{grid-template-columns:repeat(2,1fr);}
+  #panelA .access-wrap,#panelB .access-wrap{grid-template-columns:1fr;}
+  #panelB .gallery-asym{grid-template-columns:1fr 1fr;}
+  #panelB .gallery-main{grid-row:auto;min-height:200px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── スイッチャー ── -->
+<div class="switcher">
+  <span class="switcher-label">O-RA ～TOKYO～</span>
+  <button class="tab active-a" id="tabA" onclick="show('a')">A ｜ 強羅花壇スタイル</button>
+  <button class="tab" id="tabB" onclick="show('b')">B ｜ リッツスタイル</button>
+  <button class="split-btn" id="splitBtn" onclick="toggleSplit()">◫ 並べて比較</button>
+</div>
+
+<div class="panels" id="panels">
+
+  <!-- ════ PANEL A ════ -->
+  <div class="panel" id="panelA">
+    <div class="panel-badge">◀ Pattern A — 強羅花壇スタイル（白×和モダン）</div>
+
+    <header class="site-header">
+      <span class="logo">O · R · A</span>
+      <nav class="nav">
+        <a href="#">CAST</a><a href="#">SYSTEM</a>
+        <a href="#">GALLERY</a><a href="#">ACCESS</a><a href="#">NEWS</a>
+      </nav>
+      <button class="line-btn">LINE 予約</button>
+    </header>
+
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-sub">ENTERTAINMENT DINING</p>
+        <h1 class="hero-title">O-RA<span>～ TOKYO ～</span></h1>
+        <div class="hero-div"></div>
+        <p class="hero-copy">東京の夜を、あなただけの時間へ</p>
+        <a class="hero-btn" href="#">CAST を見る</a>
+      </div>
+    </div>
+
+    <!-- コンセプト -->
+    <div class="section" style="text-align:center;padding:80px 0;">
+      <div class="sec-inner">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:28px;">
+          <div style="width:40px;height:1px;background:#8b7355;"></div>
+          <p style="font-family:'Noto Serif JP',serif;font-size:clamp(14px,1.8vw,18px);font-weight:300;letter-spacing:0.18em;line-height:2.4;color:#1a1a1a;">
+            洗練された空間と、心を解きほぐすひとときを。<br>
+            選ばれた夜の舞台で、特別な時間をお届けします。
+          </p>
+          <div style="width:40px;height:1px;background:#8b7355;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- キャスト -->
+    <div class="section bg-off">
+      <div class="sec-inner">
+        <span class="eyebrow">CAST</span>
+        <h2 class="sec-title">在籍キャスト</h2>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">あかね</p><p class="cast-catch">笑顔と話術で場を彩ります</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">みこ</p><p class="cast-catch">上質な時間をともに</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">れな</p><p class="cast-catch">あなたの夜をもっと輝かせたい</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">さくら</p><p class="cast-catch">洗練された会話で特別な一夜を</p></div></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn" href="#">キャスト一覧を見る</a></div>
+      </div>
+    </div>
+
+    <!-- システム -->
+    <div class="section">
+      <div class="sec-inner">
+        <span class="eyebrow">SYSTEM</span>
+        <h2 class="sec-title">料金・システム</h2>
+        <div class="system-grid">
+          <div class="sys-item"><p class="sys-label">セット料金</p><p class="sys-val">¥ お問い合わせください</p></div>
+          <div class="sys-item"><p class="sys-label">指名料</p><p class="sys-val">¥ お問い合わせください</p></div>
+          <div class="sys-item"><p class="sys-label">延長料金</p><p class="sys-val">¥ お問い合わせください</p></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn" href="#">詳細を見る</a></div>
+      </div>
+    </div>
+
+    <!-- ギャラリー -->
+    <div class="section bg-off">
+      <div class="sec-inner">
+        <span class="eyebrow">GALLERY</span>
+        <h2 class="sec-title">ギャラリー</h2>
+        <div class="gallery-grid">
+          <div class="gallery-item"><span>PHOTO 01</span></div>
+          <div class="gallery-item"><span>PHOTO 02</span></div>
+          <div class="gallery-item"><span>PHOTO 03</span></div>
+          <div class="gallery-item"><span>PHOTO 04</span></div>
+          <div class="gallery-item"><span>PHOTO 05</span></div>
+          <div class="gallery-item"><span>PHOTO 06</span></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn" href="#">ギャラリーを見る</a></div>
+      </div>
+    </div>
+
+    <!-- アクセス -->
+    <div class="section">
+      <div class="sec-inner">
+        <span class="eyebrow">ACCESS</span>
+        <h2 class="sec-title">アクセス</h2>
+        <div class="access-wrap">
+          <div>
+            <dl class="access-dl">
+              <dt class="access-dt">住所</dt><dd class="access-dd">東京都〇〇区〇〇 1-2-3<br>〇〇ビル B1F</dd>
+              <dt class="access-dt">最寄り駅</dt><dd class="access-dd">〇〇線「〇〇駅」徒歩3分</dd>
+              <dt class="access-dt">営業時間</dt><dd class="access-dd">20:00 〜 翌 4:00</dd>
+              <dt class="access-dt">定休日</dt><dd class="access-dd">年中無休</dd>
+              <dt class="access-dt">TEL</dt><dd class="access-dd">00-0000-0000</dd>
+            </dl>
+            <a class="sec-btn" href="#" style="display:inline-block;margin-top:28px;">詳細マップを見る</a>
+          </div>
+          <div class="map-ph"><span>Google Map</span></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-logo">O · R · A ～ TOKYO ～</p>
+      <nav class="footer-nav">
+        <a href="#">CAST</a><a href="#">SYSTEM</a><a href="#">GALLERY</a><a href="#">ACCESS</a><a href="#">NEWS</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 O-RA ～TOKYO～ All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <!-- ════ PANEL B ════ -->
+  <div class="panel hidden" id="panelB">
+    <div class="panel-badge">Pattern B — リッツ・カールトンスタイル（黒×白×ゴールド） ▶</div>
+
+    <header class="site-header">
+      <span class="logo">O · R · A</span>
+      <nav class="nav">
+        <a href="#">CAST</a><a href="#">SYSTEM</a>
+        <a href="#">GALLERY</a><a href="#">ACCESS</a><a href="#">NEWS</a>
+      </nav>
+      <button class="line-btn">LINE 予約</button>
+    </header>
+
+    <div class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-sub">ENTERTAINMENT DINING</p>
+        <h1 class="hero-title">O-RA</h1>
+        <p class="hero-sub2">～ TOKYO ～</p>
+        <div class="hero-div"></div>
+        <p class="hero-copy">東京の夜を、あなただけの時間へ</p>
+      </div>
+    </div>
+
+    <!-- コンセプト B（ライト） -->
+    <div class="section-light" style="text-align:center;">
+      <div class="sec-inner" style="max-width:700px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:36px;">
+          <div style="width:60px;height:1px;background:#c9a84c;"></div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.5vw,26px);font-weight:300;letter-spacing:0.15em;line-height:2.0;color:#1a1a1a;">
+            洗練された空間と、心を解きほぐすひとときを。<br>
+            選ばれた夜の舞台で、特別な時間をお届けします。
+          </p>
+          <div style="width:60px;height:1px;background:#c9a84c;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- キャスト B（ダーク） -->
+    <div class="section-dark">
+      <div class="sec-inner">
+        <span class="eyebrow">CAST</span>
+        <h2 class="sec-title-dk">在籍キャスト</h2>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">あかね</p><p class="cast-catch">笑顔と話術で場を彩ります</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">みこ</p><p class="cast-catch">上質な時間をともに</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">れな</p><p class="cast-catch">あなたの夜をもっと輝かせたい</p></div></div>
+          <div class="cast-card"><div class="cast-photo"><span>PHOTO</span></div><div class="cast-info"><p class="cast-name">さくら</p><p class="cast-catch">洗練された会話で特別な一夜を</p></div></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn-dk" href="#">VIEW ALL CAST</a></div>
+      </div>
+    </div>
+
+    <!-- システム B（ライト） -->
+    <div class="section-light">
+      <div class="sec-inner">
+        <span class="eyebrow eyebrow-lt">SYSTEM</span>
+        <h2 class="sec-title-lt">料金・システム</h2>
+        <div class="system-grid">
+          <div class="sys-item"><p class="sys-label">セット料金</p><p class="sys-val">¥ お問い合わせください</p></div>
+          <div class="sys-item"><p class="sys-label">指名料</p><p class="sys-val">¥ お問い合わせください</p></div>
+          <div class="sys-item"><p class="sys-label">延長料金</p><p class="sys-val">¥ お問い合わせください</p></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn-lt" href="#">詳細を見る</a></div>
+      </div>
+    </div>
+
+    <!-- ギャラリー B（ダーク・非対称） -->
+    <div class="section-dark">
+      <div class="sec-inner">
+        <span class="eyebrow">GALLERY</span>
+        <h2 class="sec-title-dk">ギャラリー</h2>
+        <div class="gallery-asym">
+          <div class="gallery-main"><span>MAIN PHOTO</span></div>
+          <div class="gallery-sub"><span>PHOTO 02</span></div>
+          <div class="gallery-sub"><span>PHOTO 03</span></div>
+          <div class="gallery-sub"><span>PHOTO 04</span></div>
+          <div class="gallery-sub"><span>PHOTO 05</span></div>
+        </div>
+        <div class="sec-cta"><a class="sec-btn-dk" href="#">VIEW GALLERY</a></div>
+      </div>
+    </div>
+
+    <!-- アクセス B（ライト） -->
+    <div class="section-light">
+      <div class="sec-inner">
+        <span class="eyebrow eyebrow-lt">ACCESS</span>
+        <h2 class="sec-title-lt">アクセス</h2>
+        <div class="access-wrap">
+          <div class="map-ph"><span>Google Map</span></div>
+          <div>
+            <dl class="access-dl">
+              <dt class="access-dt">住所</dt><dd class="access-dd">東京都〇〇区〇〇 1-2-3<br>〇〇ビル B1F</dd>
+              <dt class="access-dt">最寄り駅</dt><dd class="access-dd">〇〇線「〇〇駅」徒歩3分</dd>
+              <dt class="access-dt">営業時間</dt><dd class="access-dd">20:00 〜 翌 4:00</dd>
+              <dt class="access-dt">定休日</dt><dd class="access-dd">年中無休</dd>
+              <dt class="access-dt">TEL</dt><dd class="access-dd">00-0000-0000</dd>
+            </dl>
+            <a class="sec-btn-lt" href="#" style="display:inline-block;margin-top:28px;">LINE でご予約</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p class="footer-logo">O · R · A ～ TOKYO ～</p>
+      <nav class="footer-nav">
+        <a href="#">CAST</a><a href="#">SYSTEM</a><a href="#">GALLERY</a><a href="#">ACCESS</a><a href="#">NEWS</a>
+      </nav>
+      <p class="footer-copy">&copy; 2025 O-RA ～TOKYO～ All Rights Reserved.</p>
+    </footer>
+  </div>
+
+</div>
+
+<script>
+let splitMode = false;
+
+function show(mode) {
+  splitMode = false;
+  document.getElementById('panels').classList.remove('split-mode');
+  const pA = document.getElementById('panelA');
+  const pB = document.getElementById('panelB');
+  const tA = document.getElementById('tabA');
+  const tB = document.getElementById('tabB');
+
+  if (mode === 'a') {
+    pA.classList.remove('hidden');
+    pB.classList.add('hidden');
+    tA.className = 'tab active-a';
+    tB.className = 'tab';
+  } else {
+    pB.classList.remove('hidden');
+    pA.classList.add('hidden');
+    tB.className = 'tab active-b';
+    tA.className = 'tab';
+  }
+}
+
+function toggleSplit() {
+  splitMode = !splitMode;
+  const panels = document.getElementById('panels');
+  const pA = document.getElementById('panelA');
+  const pB = document.getElementById('panelB');
+  const btn = document.getElementById('splitBtn');
+
+  if (splitMode) {
+    panels.classList.add('split-mode');
+    pA.classList.remove('hidden');
+    pB.classList.remove('hidden');
+    document.getElementById('tabA').className = 'tab';
+    document.getElementById('tabB').className = 'tab';
+    btn.textContent = '✕ 並べて比較を終了';
+    btn.style.borderColor = '#c9a84c';
+    btn.style.color = '#c9a84c';
+  } else {
+    panels.classList.remove('split-mode');
+    pB.classList.add('hidden');
+    document.getElementById('tabA').className = 'tab active-a';
+    btn.textContent = '◫ 並べて比較';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+  }
+}
+</script>
+</body>
+</html>
