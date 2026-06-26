@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCESS | O-RA ～TOKYO～</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <style>
+    .page-hero { padding:calc(var(--header-h) + 80px) 0 80px; text-align:center; background:var(--color-bg-3); border-bottom:1px solid var(--color-border); }
+    .page-hero-eyebrow { font-family:var(--font-serif); font-size:11px; letter-spacing:0.4em; color:var(--color-gold); display:block; margin-bottom:16px; }
+    .page-hero-title { font-family:var(--font-serif); font-size:clamp(28px,5vw,48px); font-weight:200; letter-spacing:0.2em; }
+
+    .access-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .access-map-full {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #1a1a1a;
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+    }
+    .access-map-full iframe { width:100%; height:100%; border:0; filter: grayscale(80%) invert(90%) hue-rotate(180deg); }
+    .map-placeholder-full {
+      width:100%; height:100%;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;
+    }
+    .map-placeholder-full span { font-size:12px; letter-spacing:0.2em; color:var(--color-dim); }
+    .map-placeholder-full a { font-size:11px; color:var(--color-gold); letter-spacing:0.1em; border-bottom:1px solid var(--color-border); padding-bottom:2px; }
+
+    .access-detail { display: flex; flex-direction: column; gap: 32px; }
+    .access-dl { display: grid; grid-template-columns: 90px 1fr; gap: 18px 24px; }
+    .access-dl dt { font-size:11px; letter-spacing:0.2em; color:var(--color-gold); font-family:var(--font-serif); padding-top:3px; }
+    .access-dl dd { font-size:14px; color:var(--color-text); line-height:1.8; }
+    .access-dl dd a { color:var(--color-gold); }
+
+    .access-divider { height:1px; background:var(--color-border); }
+
+    .access-tel { text-align: center; padding: 40px 0; border: 1px solid var(--color-border); }
+    .access-tel p { font-size:12px; letter-spacing:0.2em; color:var(--color-muted); margin-bottom:12px; }
+    .access-tel a { font-family:var(--font-serif); font-size:28px; font-weight:200; letter-spacing:0.15em; color:var(--color-gold); }
+    .access-tel small { display:block; margin-top:8px; font-size:11px; color:var(--color-dim); }
+
+    @media(max-width:900px){ .access-layout{ grid-template-columns:1fr; gap:40px; } }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <a class="header-logo" href="index.html">O · R · A</a>
+    <nav class="header-nav">
+      <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="access.html" style="color:var(--color-gold);">ACCESS</a>
+      <a href="news.html">NEWS</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </header>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+    <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a><a href="news.html">NEWS</a>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </nav>
+
+  <div class="page-hero">
+    <span class="page-hero-eyebrow">ACCESS</span>
+    <h1 class="page-hero-title">アクセス</h1>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-inner">
+        <div class="access-layout">
+
+          <!-- Google Map -->
+          <div class="fade-in">
+            <div class="access-map-full">
+              <!-- ドメイン取得後に Google Map の iframe src を差し替える -->
+              <!-- <iframe src="https://www.google.com/maps/embed?pb=..." allowfullscreen loading="lazy"></iframe> -->
+              <div class="map-placeholder-full">
+                <span>Google Map</span>
+                <a href="https://maps.google.com" target="_blank" rel="noopener">Googleマップで見る →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- アクセス情報 -->
+          <div class="access-detail fade-in delay-1">
+            <dl class="access-dl">
+              <dt>店名</dt>
+              <dd>O-RA ～TOKYO～</dd>
+              <dt>住所</dt>
+              <dd>東京都〇〇区〇〇 1-2-3<br>〇〇ビル B1F</dd>
+              <dt>最寄り駅</dt>
+              <dd>〇〇線「〇〇駅」徒歩3分</dd>
+              <dt>営業時間</dt>
+              <dd>20:00 〜 翌 4:00</dd>
+              <dt>定休日</dt>
+              <dd>年中無休</dd>
+            </dl>
+
+            <div class="access-divider"></div>
+
+            <div class="access-tel">
+              <p>ご予約・お問い合わせ</p>
+              <a href="tel:0000000000">00-0000-0000</a>
+              <small>営業時間内にお気軽にどうぞ</small>
+            </div>
+
+            <a class="btn btn-fill" href="#" target="_blank" rel="noopener" style="text-align:center;">LINE でご予約</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">O · R · A ～ TOKYO ～</p>
+      <nav class="footer-nav">
+        <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+        <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a><a href="news.html">NEWS</a>
+      </nav>
+      <div class="footer-sns">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LINE</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 O-RA ～TOKYO～ All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/scroll-anim.js"></script>
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 0));
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  </script>
+</body>
+</html>

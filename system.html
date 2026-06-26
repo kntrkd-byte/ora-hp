@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYSTEM | O-RA ～TOKYO～</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <style>
+    .page-hero { padding:calc(var(--header-h) + 80px) 0 80px; text-align:center; background:var(--color-bg-3); border-bottom:1px solid var(--color-border); }
+    .page-hero-eyebrow { font-family:var(--font-serif); font-size:11px; letter-spacing:0.4em; color:var(--color-gold); display:block; margin-bottom:16px; }
+    .page-hero-title { font-family:var(--font-serif); font-size:clamp(28px,5vw,48px); font-weight:200; letter-spacing:0.2em; }
+
+    .system-block { margin-bottom: 64px; }
+    .system-block-title {
+      font-family: var(--font-serif);
+      font-size: 14px;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 12px;
+      margin-bottom: 24px;
+    }
+    .system-table { width:100%; border-collapse: collapse; }
+    .system-table th, .system-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--color-border);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+    }
+    .system-table th { color: var(--color-gold); font-weight:300; font-family:var(--font-serif); width:40%; background: rgba(201,168,76,0.04); }
+    .system-table td { color: var(--color-text); }
+    .system-note {
+      margin-top: 48px;
+      padding: 28px 32px;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-2);
+    }
+    .system-note-title { font-size:12px; letter-spacing:0.25em; color:var(--color-gold); margin-bottom:12px; }
+    .system-note ul { display:flex; flex-direction:column; gap:8px; }
+    .system-note li { font-size:13px; color:var(--color-muted); padding-left:16px; position:relative; }
+    .system-note li::before { content:'—'; position:absolute; left:0; color:var(--color-dim); }
+    .reserve-cta { text-align:center; margin-top:64px; padding:60px 0; border-top:1px solid var(--color-border); }
+    .reserve-cta p { font-family:var(--font-serif); font-size:16px; letter-spacing:0.1em; color:var(--color-muted); margin-bottom:28px; }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <a class="header-logo" href="index.html">O · R · A</a>
+    <nav class="header-nav">
+      <a href="cast.html">CAST</a>
+      <a href="system.html" style="color:var(--color-gold);">SYSTEM</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="access.html">ACCESS</a>
+      <a href="news.html">NEWS</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー"><span></span><span></span><span></span></button>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </header>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+    <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a>
+    <a href="news.html">NEWS</a>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </nav>
+
+  <div class="page-hero">
+    <span class="page-hero-eyebrow">SYSTEM</span>
+    <h1 class="page-hero-title">料金・システム</h1>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-inner">
+
+        <div class="system-block fade-in">
+          <p class="system-block-title">セット料金</p>
+          <table class="system-table">
+            <tr><th>通常セット（60分）</th><td>¥ お問い合わせください</td></tr>
+            <tr><th>延長（30分）</th><td>¥ お問い合わせください</td></tr>
+          </table>
+        </div>
+
+        <div class="system-block fade-in delay-1">
+          <p class="system-block-title">指名料</p>
+          <table class="system-table">
+            <tr><th>本指名</th><td>¥ お問い合わせください</td></tr>
+            <tr><th>場内指名</th><td>¥ お問い合わせください</td></tr>
+          </table>
+        </div>
+
+        <div class="system-block fade-in delay-2">
+          <p class="system-block-title">ドリンク・その他</p>
+          <table class="system-table">
+            <tr><th>キャストドリンク</th><td>¥ お問い合わせください</td></tr>
+            <tr><th>シャンパン</th><td>¥ お問い合わせください〜</td></tr>
+            <tr><th>フード</th><td>¥ お問い合わせください〜</td></tr>
+          </table>
+        </div>
+
+        <div class="system-note fade-in">
+          <p class="system-note-title">ご注意事項</p>
+          <ul>
+            <li>表示価格はすべて税別となります</li>
+            <li>サービス料が別途かかります</li>
+            <li>詳しい料金はお電話またはLINEにてお問い合わせください</li>
+            <li>20歳未満の方のご入場はお断りしております</li>
+          </ul>
+        </div>
+
+        <div class="reserve-cta fade-in">
+          <p>ご予約・お問い合わせはこちら</p>
+          <a class="btn btn-fill" href="#" target="_blank" rel="noopener">LINE で予約する</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">O · R · A ～ TOKYO ～</p>
+      <nav class="footer-nav">
+        <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+        <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a>
+        <a href="news.html">NEWS</a>
+      </nav>
+      <div class="footer-sns">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LINE</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 O-RA ～TOKYO～ All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/scroll-anim.js"></script>
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 0));
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  </script>
+</body>
+</html>

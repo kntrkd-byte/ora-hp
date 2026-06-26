@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAST | O-RA ～TOKYO～</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <style>
+    .page-hero {
+      padding: calc(var(--header-h) + 80px) 0 80px;
+      text-align: center;
+      background: var(--color-bg-3);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-hero-eyebrow {
+      font-family: var(--font-serif);
+      font-size: 11px;
+      letter-spacing: 0.4em;
+      color: var(--color-gold);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .page-hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 200;
+      letter-spacing: 0.2em;
+      color: var(--color-text);
+    }
+    .cast-all-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .cast-card {
+      background: var(--color-bg-2);
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .cast-card:hover { border-color: var(--color-gold); }
+    .cast-photo {
+      aspect-ratio: 3/4;
+      background: var(--color-bg-2);
+      overflow: hidden;
+    }
+    .cast-photo img { width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease); }
+    .cast-card:hover .cast-photo img { transform: scale(1.05); }
+    .cast-photo-placeholder {
+      width:100%;height:100%;
+      background:#1a1a1a;
+      display:flex;align-items:center;justify-content:center;
+      color:var(--color-dim);font-size:11px;letter-spacing:0.15em;
+    }
+    .cast-info { padding: 20px; border-top: 1px solid var(--color-border); text-align: center; }
+    .cast-name { font-family:var(--font-serif);font-size:18px;font-weight:300;letter-spacing:0.15em;margin-bottom:6px; }
+    .cast-catch { font-size:12px;color:var(--color-muted);letter-spacing:0.1em; }
+    @media(max-width:768px){ .cast-all-grid{ grid-template-columns:repeat(2,1fr); gap:16px; } }
+    @media(max-width:480px){ .cast-all-grid{ grid-template-columns:repeat(2,1fr); gap:12px; } }
+  </style>
+</head>
+<body>
+  <header id="header" class="scrolled">
+    <a class="header-logo" href="index.html">O · R · A</a>
+    <nav class="header-nav">
+      <a href="cast.html" style="color:var(--color-gold);">CAST</a>
+      <a href="system.html">SYSTEM</a>
+      <a href="gallery.html">GALLERY</a>
+      <a href="access.html">ACCESS</a>
+      <a href="news.html">NEWS</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </header>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+    <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a>
+    <a href="news.html">NEWS</a>
+    <a class="header-line" href="#" target="_blank" rel="noopener">LINE 予約</a>
+  </nav>
+
+  <div class="page-hero">
+    <span class="page-hero-eyebrow">CAST</span>
+    <h1 class="page-hero-title">在籍キャスト</h1>
+  </div>
+
+  <main>
+    <section class="section">
+      <div class="section-inner">
+        <div class="cast-all-grid" id="castAll"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">O · R · A ～ TOKYO ～</p>
+      <nav class="footer-nav">
+        <a href="cast.html">CAST</a><a href="system.html">SYSTEM</a>
+        <a href="gallery.html">GALLERY</a><a href="access.html">ACCESS</a>
+        <a href="news.html">NEWS</a>
+      </nav>
+      <div class="footer-sns">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">LINE</a>
+      </div>
+      <p class="footer-copy">&copy; 2025 O-RA ～TOKYO～ All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/scroll-anim.js"></script>
+  <script src="js/cast-render.js"></script>
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 0));
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+    });
+    renderCastAll('castAll');
+  </script>
+</body>
+</html>
